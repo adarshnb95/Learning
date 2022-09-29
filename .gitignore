@@ -1,3 +1,4 @@
 # Files to be ignored by git
 .pytest_cache
 __pycache__
+/SQLFiles/server_media_download
