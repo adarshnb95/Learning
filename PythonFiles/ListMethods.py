@@ -6,5 +6,6 @@ print(numbers)
 print(1 in numbers)
 print(len(numbers))
 print("**********")
-for number in range(5, 13, 2):
+for number in range(5, 13, 2): # Range function works with initial, final and step parameters
     print(number)
+
