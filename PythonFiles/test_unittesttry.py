@@ -39,7 +39,6 @@ def test_product_strings():
 def test_add_all(num1, num2, result):
     assert unittesttry.add(num1, num2) == result
 
-@test
 def test_Scott_data(db):
     print("performing scott test")
     scott_data = db.get_data('Scott')
