@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Home Page{% endblock %}
+{% block content%}
+<h1>{{username}}</h1>
+<form method = "POST" action = "/logout">
+    <p><input type="submit" value = "Logout"/></p>
+</form>
+
+{% endblock%}
