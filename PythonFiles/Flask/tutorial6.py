@@ -15,9 +15,11 @@ def login():
         # session.permanent = True
         user = request.form["nm"]
         session["user"] = user
+        flash("Login successful!")
         return redirect(url_for("user"))
     else:
         if "user" in session:
+            flash("Already logged in!")
             return redirect(url_for("user"))
         return render_template("login.html")
 
@@ -27,13 +29,17 @@ def user():
         user = session["user"]
         return render_template("user.html", username = user)
     else:
+        flash("You are not logged in!")
         return redirect(url_for("login"))
 
-@app.route("/logout")
+@app.route("/logout", methods = ["POST", "GET"])
 def logout():
-    session.pop("user", None)
-    flash("You have logged out.", "info")
-    return redirect(url_for("login"))
+    if request.method == "POST":
+        if "user" in session:
+            user = session["user"]
+            flash(f"You have logged out, {user}", "info")
+        session.pop("user", None)
+        return redirect(url_for("login"))
 
 if __name__ == "__main__":
     app.run(debug=True)
